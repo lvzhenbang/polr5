@@ -1,0 +1,37 @@
+.login-submit {
+    width:80%;
+}
+
+.login-field {
+    margin-bottom: 20px;
+}
+
+.login-prompts {
+    padding-top: 15px;
+}
+
+.login-prompts small {
+    display: block;
+}
+
+/* captcha */
+.g-recaptcha {
+    margin-bottom: 2em;
+}
+
+.captcha-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+}
+
+.captcha-box img, .captcha-box input {
+    width: 49%;
+}
+
+.captcha-message {
+    margin-bottom: 2rem;
+    color: red;
+    text-align: left;
+}
