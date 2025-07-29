@@ -2,6 +2,9 @@ var parseInputDate = function (inputDate) {
     return moment(inputDate);
 };
 
+function sortBy(objData, key) {
+    return Object.values(objData).sort((a, b) => { return a[key].localeCompare(b[key]) })
+}
 
 $scope = {};
 
@@ -23,13 +26,13 @@ $scope.populateEmptyDayData = function () {
     var daysWithData = {};
 
     // Generate hash map to keep track of dates with data
-    _.each($scope.dayData, function (point) {
+    $scope.dayData.forEach(function(point) {
         var dayDate = point.x;
         daysWithData[dayDate] = true;
     });
 
     // Push zeroes for days without data
-    _.each(_.range(0, numDays), function () {
+    [...Array(numDays).keys()].forEach(function () {
         var formattedDate = i.format('YYYY-MM-DD');
 
         if (!(formattedDate in daysWithData)) {
@@ -45,7 +48,7 @@ $scope.populateEmptyDayData = function () {
 
     // Sort dayData from least to most recent
     // to ensure Chart.js displays the data correctly
-    $scope.dayData = _.sortBy($scope.dayData, ['x'])
+    $scope.dayData = sortBy($scope.dayData, 'x');
 }
 
 $scope.initDayChart = function () {
@@ -92,7 +95,7 @@ $scope.initRefererChart = function () {
     var bgColors = [ '#003559', '#162955', '#2E4272', '#4F628E', '#7887AB', '#b9d6f2'];
     var srcData = [];
 
-    _.each($scope.refererData, function (item) {
+    $scope.refererData.forEach(function(item) {
         if (srcLabels.length > 6) {
             // If more than 6 referers are listed, push the seventh and
             // beyond into "other"
@@ -122,7 +125,7 @@ $scope.initRefererChart = function () {
 $scope.initCountryChart = function () {
     var parsedCountryData = {};
 
-    _.each($scope.countryData, function(country) {
+    $scope.countryData.forEach(function(country) {
         parsedCountryData[country.label] = country.clicks;
     });
 
@@ -146,18 +149,16 @@ $scope.initDatePickers = function () {
     var $leftPicker = $('#left-bound-picker');
     var $rightPicker = $('#right-bound-picker');
 
-    var datePickerOptions = {
-        showTodayButton: true
-    }
-
-    $leftPicker.datetimepicker(datePickerOptions);
-    $rightPicker.datetimepicker(datePickerOptions);
-
-    $leftPicker.data("DateTimePicker").parseInputDate(parseInputDate);
-    $rightPicker.data("DateTimePicker").parseInputDate(parseInputDate);
-
-    $leftPicker.data("DateTimePicker").date(datePickerLeftBound, Date, moment, null);
-    $rightPicker.data("DateTimePicker").date(datePickerRightBound, Date, moment, null);
+    var leftFp = $leftPicker.flatpickr({
+        enableTime: true,
+        dateFormat: "Y-m-d h:i K",
+        defaultDate: datePickerLeftBound
+    });
+    var rightFp = $rightPicker.flatpickr({
+        enableTime: true,
+        dateFormat: "Y-m-d h:i K",
+        defaultDate: datePickerRightBound
+    });
 }
 
 $scope.init = function () {

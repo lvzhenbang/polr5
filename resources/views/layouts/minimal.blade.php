@@ -24,11 +24,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
         @yield('css')
     </head>
     <body>
-        <div class='container'>
-            @yield('content')
-        </div>
+        @yield('content')
 
-        <script src="/js/jquery-1.11.3.min.js"></script>
+        <script src="/js/jquery-3.7.1.min.js"></script>
         @yield('js')
     </body>
 </html>

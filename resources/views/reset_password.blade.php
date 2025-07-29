@@ -1,19 +1,22 @@
 @extends('layouts.base')
 
-@section('css')
-<link rel='stylesheet' href='/css/reset_password.css' />
-@endsection
-
 @section('content')
-<h1 class='header'>Reset Password</h1>
+<h1 class='header text-center mb-2'>Reset Password</h1>
 
-<div class='col-md-6 col-md-offset-3'>
+<div class='col-lg-6 mx-auto'>
     <form action="#" method='POST'>
-        <input type='password' id='passwordFirst' placeholder='New Password' class='form-control password-input-pd'>
-        <input type='password' id='passwordConfirm' placeholder='Confirm New Password' class='form-control password-input-pd' name='new_password'>
-
         <input type="hidden" name='_token' value='{{csrf_token()}}' />
-        <input type='submit' id='submitForm' value='Reset Password' class='form-control'>
+        
+        <div class="my-4">
+            <label for="passwordFirst" class="form-label">New Password:</label>
+            <input type='password' reuired id='passwordFirst' placeholder='Enter your New Password' class='form-control'>
+        </div>
+        <div class="my-4">
+            <label for="passwordFirst" class="form-label">Confirm New Password:</label>
+            <input type='password' name='new_password' reuired id='passwordConfirm' placeholder='Confirm New Password' class='form-control'>
+        </div>
+
+        <button type='submit' id='submitForm' class='btn btn-primary'>Reset Password</button>
     </form>
 </div>
 @endsection

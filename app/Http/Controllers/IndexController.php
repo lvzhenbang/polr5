@@ -25,6 +25,6 @@ class IndexController extends Controller {
             }
         }
 
-        return view('index', ['large' => true]);
+        return view('index');
     }
 }

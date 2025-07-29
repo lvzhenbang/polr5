@@ -5,10 +5,6 @@
 
 }
 
-.btn {
-    margin-top: 30px;
-}
-
 .content-div {
     text-align: center;
 }
@@ -20,14 +16,4 @@
 
 .qr-code-container img {
     display: inline !important;
-}
-
-.input-group {
-    width: 40vw;
-    margin: 0 auto;
-}
-
-.input-group-addon {
-    padding: 0px 10px;
-    cursor: pointer;
 }

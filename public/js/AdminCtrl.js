@@ -2,31 +2,20 @@ $scope = {};
 
 /* Initialize $scope variables */
 $scope.datatables = {};
-$scope.modals = {
-    editLongLink: null,
-    editUserApiInfo: null
-};
-$scope.newUserParams = {
-    username: '',
-    userPassword: '',
-    userEmail: '',
-    userRole: ''
-};
 
 $scope.syncHash = function() {
     var url = document.location.toString();
-    if (url.match('#')) {
-        $('.admin-nav a[href="#' + url.split('#')[1] + ']"').tab('show');
-    }
+    if (url.includes('#')) document.body.querySelector(`.admin-nav a[href="#${url.split('#')[1]}"]`).click();
 };
 
 // Initialise Datatables elements
 $scope.initTables = function() {
     var datatables_config = {
-        'autoWidth': false,
+        "responsive": true,
+        'autoWidth': true,
         'processing': true,
         'serverSide': true,
-
+        'scrollX': true,
         'drawCallback': function () {
             // Compile Angular bindings on each draw
             // $compile($(this))($scope);
@@ -100,10 +89,6 @@ $scope.reloadUserTables = function () {
 
 // Initialise AdminCtrl
 $scope.init = function() {
-    $('.admin-nav a').click(function(e) {
-        e.preventDefault();
-        $(this).tab('show');
-    });
     $scope.syncHash();
 
     $(window).on('hashchange', function() {
@@ -118,7 +103,6 @@ $scope.init = function() {
 };
 
 $scope.init();
-
 /*
     User Management
 */
@@ -177,27 +161,37 @@ $scope.checkNewUserFields = function() {
     return response;
 }
 
-$scope.addNewUseModal = function(event) {
+$scope.addNewUserModal = function(event) {
     $('.angular-modals').html(`<div id="edit-user-modal" class="modal fade in" tabindex="-1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                    <h4 class="modal-title">Long URL</h4>
+                    <h4 class="modal-title">Add New User</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Username: <input type="text" name="userName" class="form-control form-field" placeholder="Username">
-                    Password: <input type="password" name="userPassword" class="form-control form-field" placeholder="Password">
-                    Email: <input type="email" name="userEmail" class="form-control form-field" placeholder="Email">
-                    role: <select name="userRole" class="form-control">
-                            <option value="">default</option>
-                            <option value="admin" selected="">admin</option>
+                    <div class="mb-2">
+                        <label for="username" class="form-label">User Name:</label>
+                        <input class="form-control" type="text" required name="username" placeholder="Enter your username">
+                    </div>
+                    <div class="mb-2">
+                        <label for="userPassword" class="form-label">Password:</label>
+                        <input class="form-control" type="password" required name="userPassword" placeholder="Enter your password">
+                    </div>
+                    <div class="mb-2">
+                        <label for="userEmail" class="form-label">Email:</label>
+                        <input class="form-control" type="email" required name="userEmail" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-2">
+                        <label for="userRole" class="form-label">Role:</label>
+                        <select name="userRole" class="form-select">
+                            <option value="" selected>default</option>
+                            <option value="admin">admin</option>
                         </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" aria-label="Save">Save Changes</button>
+                    <button type="button" class="btn btn-primary" aria-label="Save">Save Changes</button>
                 </div>
             </div>
         </div>
@@ -264,10 +258,8 @@ $scope.openAPIModal = function(api_key, api_active, api_quota, user_id) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
                     <h4 class="modal-title">Edit User API Settings</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <p>
@@ -282,8 +274,9 @@ $scope.openAPIModal = function(api_key, api_active, api_quota, user_id) {
                     </p>
 
                     <p>
-                        <span>API Quota (req/min, -1 for unlimited):</span> <input type="number" class="form-control api-quota" value="${api_quota ? api_quota : 60}">
+                        <span>API Quota:</span> <input type="number" class="form-control api-quota" value="${api_quota ? api_quota : 60}">
                         <a onclick="$scope.updateAPIQuota(${user_id})" class="btn btn-xs btn-warning">change</a>
+                        (req/min, -1 for unlimited)
                     </p>
                 </div>
             </div>
@@ -380,16 +373,14 @@ $scope.editLongLink = function(link_ending, old_long_link) {
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
                     <h4 class="modal-title">Long URL</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <input type="url" value="${old_long_link}" placeholder="Long URL..." class="form-control">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" onclick="$scope.updateLongLink(event, ${link_ending})" class="btn btn-default" data-dismiss="modal" aria-label="Save">Save Changes</button>
+                    <button type="button" onclick="$scope.updateLongLink(event, ${link_ending})" class="btn btn-primary" aria-label="Save">Save Changes</button>
                 </div>
             </div>
         </div>

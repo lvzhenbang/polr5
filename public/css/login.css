@@ -1,17 +1,5 @@
-.login-submit {
-    width:80%;
-}
-
-.login-field {
-    margin-bottom: 20px;
-}
-
-.login-prompts {
-    padding-top: 15px;
-}
-
-.login-prompts small {
-    display: block;
+.form-submit {
+    width: 100%;
 }
 
 /* captcha */

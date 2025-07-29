@@ -1,9 +1,5 @@
 var original_link;
 
-function select_text() {
-    $('.result-box').trigger('focus').trigger('select');
-}
-
 function copyToClipboard(str) {
     var el = document.createElement('textarea');
     el.value = str;
@@ -37,16 +33,14 @@ $('#generate-qr-code').on('click', function () {
 });
 
 $('#clipboard-copy').on('click',function () {
-    copyToClipboard($('#shor-url').val());
+    // console.log('x')
+    copyToClipboard(original_link);
     $('#clipboard-copy').tooltip('show');
+    setTimeout(() => {
+        $('#clipboard-copy').tooltip('dispose');
+    }, 1000);
 })
 
 $(function () {
-    original_link = $('.result-box').val();
-    select_text();
-});
-
-$('.result-box').on('click', select_text);
-$('.result-box').on('change', function () {
-    $(this).val(original_link);
+    original_link = $('#short_url').val();
 });

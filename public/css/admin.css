@@ -10,27 +10,12 @@
     width: 150px;
 }
 
-.change-password-btn {
-    margin-top: 15px;
-}
-
-.password-box {
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-
 .hidden-metadata {
     display: none;
 }
 
 .api-quota {
     display: inline;
-}
-
-.users-heading {
-    display: inline-block;
-    margin-bottom: 0.9em;
-    margin-right: 0.5em;
 }
 
 input.api-quota {
@@ -41,20 +26,22 @@ input.api-quota {
     padding-left: 0.8em;
 }
 
-.wrap-text {
-    word-wrap: break-word;
+.dt-column-title {
+    white-space: nowrap;
 }
 
-@media (min-width: 700px) {
-    table {
-        table-layout: fixed;
-    }
+table button {
+    white-space: nowrap;
 }
 
-a.new-user-add {
-    margin-left: 0.5em
+table select {
+    min-width: 4.6rem;
 }
 
-.edit-long-link-btn {
-    opacity: 0.45;
+table .long-link-url {
+    display: inline-block;
+    max-width: 12rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

@@ -32,12 +32,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
     @if (env('APP_STYLESHEET'))
     <link rel="stylesheet" href="{{env('APP_STYLESHEET')}}">
     @else
-    <link rel="stylesheet" href="/css/default-bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
     @endif
 
     <link href="/css/base.css" rel="stylesheet">
     <link href="/css/toastr.min.css" rel="stylesheet">
-    <link href="/css/font-awesome.min.css" rel="stylesheet">
 
     <link rel="shortcut icon" href="/favicon.ico">
     @yield('css')
@@ -45,15 +44,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 <body>
     @include('snippets.navbar')
     <div class="container">
-        <div class="content-div @if (!isset($no_div_padding)) content-div-padding @endif @if (isset($large)) jumbotron large-content-div @endif">
+        <div class="content-div @if (!isset($no_div_padding)) content-div-padding @endif">
             @yield('content')
         </div>
     </div>
-
+   
     {{-- Load JavaScript dependencies --}}
     <script src="/js/constants.js"></script>
     <script src="/js/jquery-3.7.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/toastr.min.js"></script>
     <script src="/js/base.js"></script>
 

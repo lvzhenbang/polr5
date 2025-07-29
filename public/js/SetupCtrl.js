@@ -1,10 +1,12 @@
 $scope = {};
 
 $scope.init = function () {
-    $('[data-toggle="popover"]').popover({
+    $('[data-bs-toggle="tooltip"]').tooltip({
         trigger: "hover",
         placement: "right"
     });
 };
 
-$scope.init();
+$(document).ready(function(){
+    $scope.init();
+});
