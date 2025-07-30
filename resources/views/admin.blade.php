@@ -16,7 +16,7 @@
                 <a class="nav-link text-black" href="#links" data-bs-toggle="tab" data-bs-target="#links-pane">Links</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link text-black" href="#settings" data-bs-toggle="tab" data-bs-target="#settings-pane">Settings</a>
+                <a class="nav-link text-black" href="#settings" data-bs-toggle="tab" data-bs-target="#settings-pane">Reset Password</a>
             </li>
 
             @if ($role == $admin_role)
@@ -53,7 +53,7 @@
             </div>
 
             <div role="tabpanel" class="tab-pane fade" id="settings-pane">
-                <h3 class="d-none d-lg-block mb-5">Change Password</h3>
+                <h3 class="d-none d-lg-block mb-5">Reset Password</h3>
                 <div class="col-lg-6">
                     <form action="/admin/action/change_password" method="POST">
                         <input type="hidden" name="_token" value="{{csrf_token()}}">                        

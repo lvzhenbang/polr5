@@ -8,8 +8,8 @@
 @endsection
 
 @section('content')
-<div class="stats-header mb-3">
-    <h3 class="py-3 text-center">Stats</h3>
+<div class="stats-header mb-5">
+    <h3 class="py-5 text-center">Stats</h3>
     <div class="row">
         <div class="col-md-3 offset-md-3 link-meta">
             <p>
@@ -48,7 +48,7 @@
     </div>
 </div>
 
-<div class="row mb-3">
+<div class="row mb-5">
     <div class="col-md-8">
         <h4 class="d-block">Traffic over Time <span class="fs-4 text-primary">(total: {{ $link->clicks }})</span></h4>
         <canvas id="dayChart"></canvas>
@@ -59,7 +59,7 @@
     </div>
 </div>
 
-<div class="row mb-3">
+<div class="row mb-5">
     <div class="col-md-4">
         <h4 class="d-block">Browsers</h4>
         <canvas id="browserChart"></canvas>
@@ -74,7 +74,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row mb-5">
     <div class="col-md-6">
         <h4 class="d-block">Map</h4>
         <div id="mapChart"></div>

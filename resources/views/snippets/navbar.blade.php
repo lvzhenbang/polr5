@@ -35,7 +35,7 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-end bg-white" aria-labelledby="dropdownMenu" data-bs-popper="static">
                 <li><a class="dropdown-item text-black" href="{{ route('admin') }}">Dashboard</a></li>
-                <li><a class="dropdown-item text-black" href="{{ route('admin') }}#settings">Settings</a></li>
+                <!-- <li><a class="dropdown-item text-black" href="{{ route('admin') }}#settings">Reset Password</a></li> -->
                 <li><a class="dropdown-item text-black" href="{{ route('logout') }}">Logout</a></li>
             </ul>
         </div>
