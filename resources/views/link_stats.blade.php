@@ -2,9 +2,9 @@
 
 @section('css')
 <link rel="stylesheet" href="/css/dataTables.bootstrap5.css">
-<link rel='stylesheet' href='/css/jquery-jvectormap.css'>
-<link rel='stylesheet' href='/css/flatpickr.min.css'>
-<link rel='stylesheet' href='/css/stats.css'>
+<link rel="stylesheet" href="/css/jquery-jvectormap.css">
+<link rel="stylesheet" href="/css/flatpickr.min.css">
+<link rel="stylesheet" href="/css/stats.css">
 @endsection
 
 @section('content')
@@ -102,13 +102,13 @@ var datePickerRightBound = '{{ $right_bound }}';
 </script>
 
 {{-- Include extra JS --}}
-<script src='/js/lodash.min.js'></script>
-<script src='/js/chart.bundle.min.js'></script>
+<script src="/js/lodash.min.js"></script>
+<script src="/js/chart.bundle.min.js"></script>
 <script src="/js/dataTables.min.js"></script>
 <script src="/js/dataTables.bootstrap5.js"></script>
-<script src='/js/jquery-jvectormap.min.js'></script>
-<script src='/js/jquery-jvectormap-world-mill.js'></script>
-<script src='/js/moment.min.js'></script>
-<script src='/js/flatpickr.min.js'></script>
-<script src='/js/StatsCtrl.js'></script>
+<script src="/js/jquery-jvectormap.min.js"></script>
+<script src="/js/jquery-jvectormap-world-mill.js"></script>
+<script src="/js/moment.min.js"></script>
+<script src="/js/flatpickr.min.js"></script>
+<script src="/js/StatsCtrl.js"></script>
 @endsection

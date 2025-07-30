@@ -5,11 +5,11 @@
 @endsection
 
 @section('content')
-<div class='logo-well'>
-    <img class='logo-img' src='/img/logo.png' />
+<div class="logo-well">
+    <img class="logo-img" src="/img/logo.png" />
 </div>
 
-<div class='about-contents mt-2'>
+<div class="about-contents mt-2">
     @if ($role == "admin")
     <dl>
         <p>Build Information</p>
@@ -21,7 +21,7 @@
     @endif
 
     <p>{{env('APP_NAME')}} is powered by Polr 2, an open source, minimalist link shortening platform. The Polr Project is in no way associated with this site.
-        Learn more at <a href='https://github.com/Cydrobolt/polr'>its Github page</a> or its <a href="//project.polr.me">project site</a>.
+        Learn more at <a href="https://github.com/Cydrobolt/polr">its Github page</a> or its <a href="//project.polr.me">project site</a>.
         <br />Polr is licensed under the GNU GPL License.
     </p>
 </div>

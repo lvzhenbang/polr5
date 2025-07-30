@@ -1,16 +1,16 @@
 @extends('layouts.base')
 
 @section('css')
-<link rel='stylesheet' href='/css/signup.css' />
+<link rel="stylesheet" href="/css/signup.css" />
 @endsection
 
 @section('content')
 <div class="row">
-    <div class='col-lg-6 col-md-8 mx-auto'>
-        <h2 class='mb-5 text-center'>Register</h2>
+    <div class="col-lg-6 col-md-8 mx-auto">
+        <h2 class="mb-5 text-center">Register</h2>
 
-        <form action='/signup' method='POST'>
-            <input type="hidden" name='_token' value='{{csrf_token()}}' />
+        <form action="/signup" method="POST">
+            <input type="hidden" name="_token" value="{{csrf_token()}}" />
             <div class="mb-4">
                 <label for="username" class="form-label">User Name</label>
                 <input class="form-control" type="text" require name="username" placeholder="Enter your username">

@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('css')
-<link rel='stylesheet' href='/css/shorten_result.css' />
+<link rel="stylesheet" href="/css/shorten_result.css" />
 @endsection
 
 @section('content')
