@@ -23,6 +23,9 @@ class CreateClicksTable extends Migration
             $table->string('referer')->nullable();
             $table->string('referer_host')->nullable();
             $table->text('user_agent')->nullable();
+            $table->string('browser')->nullable();
+            $table->string('os')->nullable();
+            $table->string('device')->nullable();
             $table->integer('link_id')->unsigned();
 
             $table->index('ip');

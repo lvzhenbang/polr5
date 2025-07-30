@@ -70,6 +70,37 @@ class StatsHelper {
         return $stats;
     }
 
+    public function getBrowserStats() {
+        $stats = $this->getBaseRows()
+            ->select(DB::raw("browser as label, count(*) as clicks"))
+            ->groupBy('browser')
+            ->orderBy('clicks', 'desc')
+            ->get();
+
+        return $stats;
+    }
+
+    public function getOsStats() {
+        $stats = $this->getBaseRows()
+            ->select(DB::raw("os as label, count(*) as clicks"))
+            ->groupBy('os')
+            ->orderBy('clicks', 'desc')
+            ->get();
+
+        return $stats;
+    }
+
+    public function getDeviceStats() {
+        $stats = $this->getBaseRows()
+            ->select(DB::raw("device as label, count(*) as clicks"))
+            ->groupBy('device')
+            ->orderBy('clicks', 'desc')
+            ->get();
+
+        return $stats;
+    }
+    
+
     public function getRefererStats() {
         $stats = $this->getBaseRows()
             ->select(DB::raw("COALESCE(referer_host, 'Direct') as label, count(*) as clicks"))

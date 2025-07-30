@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use Illuminate\Http\Request;
+use WhichBrowser\Parser;
 
 use GoIP;
 use Log;
@@ -40,7 +41,14 @@ class ClickHelper {
         $click->country = self::getCountry($ip);
         $click->referer = $referer;
         $click->referer_host = ClickHelper::getHost($referer);
-        $click->user_agent = $request->server('HTTP_USER_AGENT');
+
+        $useAgent = $request->server('HTTP_USER_AGENT');
+        $click->user_agent = $useAgent;
+        $whichBrowser = new Parser($useAgent);        
+        $click->browser = $whichBrowser->browser->name;
+        $click->os = $whichBrowser->os->toString();
+        $click->device = $whichBrowser->device->type;
+
         $click->save();
 
         return true;

@@ -48,24 +48,39 @@
     </div>
 </div>
 
-<div class="mb-3">
+<div class="row mb-3">
     <div class="col-md-8">
-        <h4>Traffic over Time</h4> (total: {{ $link->clicks }})
+        <h4 class="d-block">Traffic over Time <span class="fs-4 text-primary">(total: {{ $link->clicks }})</span></h4>
         <canvas id="dayChart"></canvas>
     </div>
     <div class="col-md-4">
-        <h4>Traffic sources</h4>
+        <h4 class="d-block">Traffic sources</h4>
         <canvas id="refererChart"></canvas>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-4">
+        <h4 class="d-block">Browsers</h4>
+        <canvas id="browserChart"></canvas>
+    </div>
+    <div class="col-md-4">
+        <h4 class="d-block">Operation Systems</h4>
+        <canvas id="osChart"></canvas>
+    </div>
+    <div class="col-md-4">
+        <h4 class="d-block">Devices</h4>
+        <canvas id="deviceChart"></canvas>
     </div>
 </div>
 
 <div class="row">
     <div class="col-md-6">
-        <h4>Map</h4>
+        <h4 class="d-block">Map</h4>
         <div id="mapChart"></div>
     </div>
     <div class="col-md-6">
-        <h4>Referers</h4>
+        <h4 class="d-block">Referers</h4>
         <table class="table table-hover" id="refererTable">
             <thead>
                 <tr>
@@ -95,6 +110,9 @@
 var dayData = JSON.parse('{!! json_encode($day_stats) !!}');
 var refererData = JSON.parse('{!! json_encode($referer_stats) !!}');
 var countryData = JSON.parse('{!! json_encode($country_stats) !!}');
+var browserData = JSON.parse('{!! json_encode($browser_stats) !!}');
+var osData = JSON.parse('{!! json_encode($os_stats) !!}');
+var deviceData = JSON.parse('{!! json_encode($device_stats) !!}');
 
 // Load datepicker dates
 var datePickerLeftBound = '{{ $left_bound }}';

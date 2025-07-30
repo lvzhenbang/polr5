@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.0",
         "mews/captcha": "^3.3",
         "torann/geoip": "^3.0",
+        "whichbrowser/parser": "^2.1",
         "yajra/laravel-datatables-oracle": "^9.21"
     },
     "require-dev": {

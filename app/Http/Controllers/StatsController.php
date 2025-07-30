@@ -75,12 +75,18 @@ class StatsController extends Controller {
         $day_stats = $stats->getDayStats();
         $country_stats = $stats->getCountryStats();
         $referer_stats = $stats->getRefererStats();
+        $browser_stats = $stats->getBrowserStats();
+        $os_stats = $stats->getOsStats();
+        $device_stats = $stats->getDeviceStats();
 
         return view('link_stats', [
             'link' => $link,
             'day_stats' => $day_stats,
             'country_stats' => $country_stats,
             'referer_stats' => $referer_stats,
+            'browser_stats' => $browser_stats,
+            'os_stats' => $os_stats,
+            'device_stats' => $device_stats,
 
             'left_bound' => ($user_left_bound ?: $left_bound->toDateTimeString()),
             'right_bound' => ($user_right_bound ?: $right_bound->toDateTimeString()),
