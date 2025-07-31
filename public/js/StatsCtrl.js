@@ -263,7 +263,7 @@ $scope.initCountryChart = function () {
         parsedCountryData[country.label] = country.clicks;
     });
 
-    $('#mapChart').vectorMap({
+    $('#countryChart').vectorMap({
         map: 'world_mill',
         series: {
             regions: [{
@@ -272,8 +272,16 @@ $scope.initCountryChart = function () {
                 normalizeFunction: 'polynomial'
             }]
         },
+        regionStyle: {
+            initial: {
+                fill: '#d1d5db',
+                stroke: '#676767',
+                strokeWidth: 2.5,
+            },
+        },
+        backgroundColor: '#fdfdfd',
         onRegionTipShow: function(e, el, code) {
-            el.html(el.html()+' (' + (parsedCountryData[code] || 0) + ')');
+            el.html(el.html()+' <span style="color:rgba(92, 9, 247, 1)">(' + (parsedCountryData[code] || 0) + ')</span>');
         }
     });
 

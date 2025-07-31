@@ -10,24 +10,24 @@
     <div class="col-md-2">
         <ul class="nav nav-underline flex-md-row flex-lg-column admin-nav" role="tablist">
             <li class="nav-item" role="presentation" aria-current="Home">
-                <a class="nav-link text-black active" href="#home" data-bs-toggle="tab" data-bs-target="#home-pane">Dashboard</a>
+                <a class="nav-link active" href="#home" data-bs-toggle="tab" data-bs-target="#home-pane">Dashboard</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link text-black" href="#links" data-bs-toggle="tab" data-bs-target="#links-pane">Links</a>
+                <a class="nav-link" href="#links" data-bs-toggle="tab" data-bs-target="#links-pane">Links</a>
             </li>
             <li class="nav-item" role="presentation">
-                <a class="nav-link text-black" href="#settings" data-bs-toggle="tab" data-bs-target="#settings-pane">Reset Password</a>
+                <a class="nav-link" href="#settings" data-bs-toggle="tab" data-bs-target="#settings-pane">Reset Password</a>
             </li>
 
             @if ($role == $admin_role)
             <li class="nav-item" role="presentation">
-                <a class="nav-link text-black" href="#admin" data-bs-toggle="tab" data-bs-target="#admin-pane">Users</a>
+                <a class="nav-link" href="#admin" data-bs-toggle="tab" data-bs-target="#admin-pane">Users</a>
             </li>
             @endif
 
             @if ($api_active == 1)
             <li class="nav-item" role="presentation">
-                <a class="nav-link text-black" href="#developer" data-bs-toggle="tab" data-bs-target="#developer-pane">Developer</a>
+                <a class="nav-link" href="#developer" data-bs-toggle="tab" data-bs-target="#developer-pane">Developer</a>
             </li>
             @endif
         </ul>

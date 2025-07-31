@@ -8,18 +8,18 @@ svg {
     position: relative;
     overflow: hidden;
     touch-action: none;
+    border: var(--bs-border-width) solid var(--bs-border-color);
 }
 
 .jvectormap-tip {
     position: absolute;
     display: none;
-    border: solid 1px #CDCDCD;
+    padding: 6px;
+    background: #fff;
+    color: #000;
+    font-size: 13px;
+    border: solid 1px #cdcdcd;
     border-radius: 3px;
-    background: #292929;
-    color: white;
-    font-family: sans-serif, Verdana;
-    font-size: smaller;
-    padding: 3px;
 }
 
 .jvectormap-zoomin, .jvectormap-zoomout, .jvectormap-goback {

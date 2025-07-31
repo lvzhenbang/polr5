@@ -76,8 +76,8 @@
 
 <div class="row mb-5">
     <div class="col-md-6">
-        <h4 class="d-block">Map</h4>
-        <div id="mapChart"></div>
+        <h4 class="d-block">Countries</h4>
+        <div id="countryChart"></div>
     </div>
     <div class="col-md-6">
         <h4 class="d-block">Referers</h4>
@@ -120,7 +120,6 @@ var datePickerRightBound = '{{ $right_bound }}';
 </script>
 
 {{-- Include extra JS --}}
-<script src="/js/lodash.min.js"></script>
 <script src="/js/chart.bundle.min.js"></script>
 <script src="/js/dataTables.min.js"></script>
 <script src="/js/dataTables.bootstrap5.js"></script>
