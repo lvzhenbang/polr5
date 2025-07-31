@@ -1,10 +1,11 @@
 {
-    "name": "laravel/laravel",
+    "name": "laravel/polr",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "URL shortener",
     "keywords": [
         "framework",
-        "laravel"
+        "laravel",
+        "url-shortener"
     ],
     "license": "MIT",
     "require": {
