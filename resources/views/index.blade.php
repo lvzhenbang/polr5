@@ -9,10 +9,11 @@
 
 <form method="POST" action="/shorten" role="form">
     <input type="hidden" name="_token" value="{{csrf_token()}}" />
+    <input type="hidden" name="link-url" id="link-url">
 
-    <input type="url" class="form-control long-link-input" name="link-url" placeholder="https://" autocomplete="off" required>
+    <input type="url" class="form-control long-link-input" placeholder="https://" autocomplete="off" required>
 
-    <div class="row" id="options" style="display: none;">
+    <div class="row" id="link-options-box" style="display: none;">
         <p>Customize link</p>
 
         @if (!env('SETTING_PSEUDORANDOM_ENDING'))
@@ -34,9 +35,31 @@
             <div class="mt-2" id="link-availability-status"></div>
         </div>
     </div>
+
+    <div class="row" id="utm-options-box" style="display: none;">
+        <p>Add UTM</p>
+        <div class="col-md-4 mb-4">
+            <label for="utmSource" class="form-label">Source</label>
+            <input class="form-control" id="utmSource" type="text" name="utmSource">
+        </div>
+        <div class="col-md-4 mb-4">
+            <label for="utmMedium" class="form-label">Medium</label>
+            <input class="form-control" id="utmMedium" type="text" name="utmMedium">
+        </div>
+        <div class="col-md-4 mb-4">
+            <label for="utmCampaign" class="form-label">Campaign</label>
+            <input class="form-control" id="utmCampaign" type="text" name="utmCampaign">
+        </div>
+    </div>
+    <div class="my-3">
+        <p>Destionation Url</p>
+        <input type="text" class="form-control" id="destination-url">
+    </div>
+
     <div class="text-center">
         <button type="submit" class="btn btn-primary btn-large">Shorten</button>
-        <button class="btn btn-outline-secondary btn-large" id="show-link-options">Link Options</button>
+        <span class="btn btn-outline-secondary btn-large" id="show-link-options">Link Options</span>
+        <span class="btn btn-outline-info btn-large" id="show-utm-options">UTM Options</span>
     </div>
 </form>
 

@@ -1,17 +1,54 @@
 $(function() {
-    var optionsButton = $('#show-link-options');
-    $('#options').hide();
-    var slide = 0;
-    optionsButton.click(function() {
-        if (slide === 0) {
-            $("#options").slideDown();
-            slide = 1;
+    function resetURL() {
+       var newUrl = $(".long-link-input").val();
+       var paramsStr = "";
+       var sourceVal = $("#utmSource").val();
+       var mediumVal = $("#utmMedium").val();
+       var campaignVal = $("#utmCampaign").val();
+
+       if (sourceVal) {
+            paramsStr += `&source=${sourceVal}`;
+       }
+       if (mediumVal) {
+            paramsStr += `&medium=${mediumVal}`;
+       }
+       if (campaignVal) {
+            paramsStr += `&campaign=${campaignVal}`;
+       }
+
+       if(newUrl) {
+            if (paramsStr) {
+                if (newUrl.indexOf('?') > -1) {
+                    newUrl += paramsStr;
+                } else {
+                    newUrl += `?${paramsStr.slice(1)}`;
+                }
+            }
+            $('#destination-url, #link-url').val(newUrl)
+       }
+    }
+    $('#show-link-options').on('click', function(e) {
+        var $el = $(e.target);
+        if ($el.hasClass('active')) {
+            $el.removeClass('active');
+            $("#link-options-box").slideUp();
         } else {
-            $("#options").slideUp();
-            slide = 0;
+            $el.addClass('active');
+            $("#link-options-box").slideDown();
         }
     });
-    $('#check-link-availability').click(function() {
+    $('#show-utm-options').on('click', function(e) {
+        var $el = $(e.target);
+        if ($el.hasClass('active')) {
+            $el.removeClass('active');
+            $("#utm-options-box").slideUp();
+        } else {
+            $el.addClass('active');
+            $("#utm-options-box").slideDown();
+        }
+    });
+    $('.long-link-input, #utmSource, #utmMedium, #utmCampaign').on('change', resetURL);
+    $('#check-link-availability').on('click', function() {
         var custom_link = $('#custom-url-field').val();
         var request = $.ajax({
             url: "/api/v2/link_avail_check",
