@@ -10,9 +10,9 @@ Setup Completed
 @endsection
 
 @section('content')
-<nav class="navbar bg-dark sticky-top">
+<nav class="navbar sticky-top border-bottom border-black border-opacity-10">
     <div class="container">
-        <a class="navbar-brand text-white" href="/">Polr</a>
+        <a class="navbar-brand" href="/">Polr</a>
     </div>
 </nav>
 
