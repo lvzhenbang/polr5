@@ -126,9 +126,6 @@
 @endsection
 
 @section('js')
-{{-- Include modal templates --}}
-@include('snippets.modals')
-
 {{-- Include extra JS --}}
 <script src="/js/dataTables.min.js"></script>
 <script src="/js/dataTables.bootstrap5.js"></script>
