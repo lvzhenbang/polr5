@@ -10,18 +10,6 @@ $scope.syncHash = function() {
 
 // Initialise Datatables elements
 $scope.initTables = function() {
-    var datatables_config = {
-        "responsive": true,
-        'autoWidth': true,
-        'processing': true,
-        'serverSide': true,
-        'scrollX': true,
-        'drawCallback': function () {
-            // Compile Angular bindings on each draw
-            // $compile($(this))($scope);
-        }
-    };
-
     if ($('#admin_users_table').length) {
         $scope.datatables['admin_users_table'] = $('#admin_users_table').DataTable($.extend({
             "ajax": BASE_API_PATH + 'admin/get_admin_users',
@@ -36,7 +24,14 @@ $scope.initTables = function() {
                 {data: 'change_role', name: 'change_role', orderable: false, searchable: false},
                 {data: 'delete', name: 'delete', orderable: false, searchable: false}
             ]
-        }, datatables_config));
+        },
+        {
+            "responsive": true,
+            'autoWidth': true,
+            'processing': true,
+            'serverSide': true,
+            'scrollX': true
+        }));
     }
     if ($('#admin_links_table').length) {
         $scope.datatables['admin_links_table'] = $('#admin_links_table').DataTable($.extend({
@@ -53,19 +48,34 @@ $scope.initTables = function() {
                 {data: 'delete', name: 'delete', orderable: false, searchable: false}
 
             ]
-        }, datatables_config));
+        },
+        {
+            "responsive": true,
+            'autoWidth': true,
+            'processing': true,
+            'serverSide': true,
+            'scrollX': true
+        }));
     }
+    if ($('#admin_links_table').length) {
+        $scope.datatables['user_links_table'] = $('#user_links_table').DataTable($.extend({
+            "ajax": BASE_API_PATH + 'admin/get_user_links',
 
-    $scope.datatables['user_links_table'] = $('#user_links_table').DataTable($.extend({
-        "ajax": BASE_API_PATH + 'admin/get_user_links',
-
-        "columns": [
-            {className: 'wrap-text', data: 'short_url', name: 'short_url'},
-            {className: 'wrap-text', data: 'long_url', name: 'long_url'},
-            {data: 'clicks', name: 'clicks'},
-            {data: 'created_at', name: 'created_at'}
-        ]
-    }, datatables_config));
+            "columns": [
+                {className: 'wrap-text', data: 'short_url', name: 'short_url'},
+                {className: 'wrap-text', data: 'long_url', name: 'long_url'},
+                {data: 'clicks', name: 'clicks'},
+                {data: 'created_at', name: 'created_at'}
+            ]
+        },
+        {
+            "responsive": true,
+            'autoWidth': true,
+            'processing': true,
+            'serverSide': true,
+            'scrollX': true
+        }));
+    }
 };
 
 $scope.reloadLinkTables = function () {
