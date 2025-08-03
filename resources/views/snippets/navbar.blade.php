@@ -14,7 +14,7 @@
     </symbol>
 </svg>
 <nav class="navbar navbar-expand-lg sticky-top border-bottom border-black border-opacity-10">
-    <div class="container">
+    <div class="container-md">
         <!-- signin/signup/admin for pc -->
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" class="bi" height="24" width="24" aria-hidden="true"> <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" fill="currentColor"></path> </svg>
