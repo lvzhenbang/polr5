@@ -35,7 +35,7 @@
             </div>
         </div>
 
-        <ul class="navbar-nav flex-row flex-wrap">
+        <ul class="navbar-nav flex-row flex-nowrap">
             <!-- signin/signup/admin -->
             @if (empty(session('username')))
             <li class="nav-item">
@@ -57,11 +57,12 @@
                 </ul>
             </li>
             @endif
-            <li class="nav-item py-2 py-lg-1 col-12 col-lg-auto"> <div class="vr d-none d-lg-flex h-100 mx-lg-2"></div> <hr class="d-lg-none my-2"> </li>
+            <li class="nav-item py-2 py-lg-1 col-lg-auto">
+                <div class="vr d-flex h-100 mx-2"></div>
+            </li>
             <li class="nav-item dropdown">
                 <button class="btn btn-link nav-link px-0 px-lg-2 py-2 d-flex align-items-center dropdown-toggle" id="bd-theme" type="button" aria-expanded="false" data-bs-toggle="dropdown" data-bs-display="static" aria-label="Toggle theme (dark)">
                     <svg class="my-1 theme-icon-active" width="16px" height="16px"><use href="#sun-fill"></use></svg>
-                    <span class="d-lg-none ms-2" id="bd-theme-text">Toggle theme</span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-theme-text">
                     <li>
