@@ -3,7 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="/css/dataTables.bootstrap5.css">
 <link rel="stylesheet" href="/css/jquery-jvectormap.css">
-<link rel="stylesheet" href="/css/flatpickr.min.css">
+<link rel="stylesheet" href="/css/daterangepicker.css">
 <link rel="stylesheet" href="/css/stats.css">
 @endsection
 
@@ -29,15 +29,12 @@
         </div>
         <div class="col-md-3">
             <form action="" method="GET">
+                <input type="hidden" name="type" id="date-type">
+                <input type="hidden" name="left_bound" id="left-bound-picker">
+                <input type="hidden" name="right_bound" id="right-bound-picker">
                 <div class="input-group mb-2 date">
-                    <input type="text" name="left_bound" class="form-control" id="left-bound-picker">
-                    <label for="left-bound-picker" class="form-label mb-0 input-group-text">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-                    </label>
-                </div>
-                <div class="input-group mb-2 date">
-                    <input type="text" name="right_bound" class="form-control" id="right-bound-picker">
-                    <label for="right-bound-picker" class="form-label mb-0 input-group-text">
+                    <input type="text" class="form-control" id="stat-daterangepicker">
+                    <label for="stat-daterangepicker" class="form-label mb-0 input-group-text">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
                     </label>
                 </div>
@@ -107,7 +104,7 @@
 {{-- Load data --}}
 <script>
 // Load data
-var dayData = JSON.parse('{!! json_encode($day_stats) !!}');
+var dayData = JSON.parse('{!! json_encode($date_stats) !!}');
 var refererData = JSON.parse('{!! json_encode($referer_stats) !!}');
 var countryData = JSON.parse('{!! json_encode($country_stats) !!}');
 var browserData = JSON.parse('{!! json_encode($browser_stats) !!}');
@@ -117,6 +114,8 @@ var deviceData = JSON.parse('{!! json_encode($device_stats) !!}');
 // Load datepicker dates
 var datePickerLeftBound = '{{ $left_bound }}';
 var datePickerRightBound = '{{ $right_bound }}';
+var type = '{{ $type }}';
+var dateType = '{{ $date_type }}';
 </script>
 
 {{-- Include extra JS --}}
@@ -126,6 +125,6 @@ var datePickerRightBound = '{{ $right_bound }}';
 <script src="/js/jquery-jvectormap.min.js"></script>
 <script src="/js/jquery-jvectormap-world-mill.js"></script>
 <script src="/js/moment.min.js"></script>
-<script src="/js/flatpickr.min.js"></script>
+<script src="/js/daterangepicker.min.js"></script>
 <script src="/js/StatsCtrl.js"></script>
 @endsection

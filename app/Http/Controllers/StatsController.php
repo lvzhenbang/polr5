@@ -14,8 +14,6 @@ use App\Models\Clicks;
 use App\Helpers\StatsHelper;
 
 class StatsController extends Controller {
-    const DAYS_TO_FETCH = 30;
-
     public function displayStats(Request $request, $short_url) {
         $validator = Validator::make($request->all(), [
             'left_bound' => 'date',
@@ -29,16 +27,7 @@ class StatsController extends Controller {
 
         $user_left_bound = $request->input('left_bound');
         $user_right_bound = $request->input('right_bound');
-
-        // Carbon bounds for StatHelper
-        $left_bound = $user_left_bound ?: Carbon::now()->subDays(self::DAYS_TO_FETCH);
-        $right_bound = $user_right_bound ?: Carbon::now();
-
-        if (Carbon::parse($right_bound)->gt(Carbon::now()) && !session('error')) {
-            // Right bound must not be greater than current time
-            // i.e cannot be in the future
-            return redirect()->back()->with('error', 'Right date bound cannot be in the future.');
-        }
+        $type = $request->input('type');
 
         if (!$this->isLoggedIn()) {
             return redirect(route('login'))->with('error', 'Please login to view link stats.');
@@ -63,7 +52,7 @@ class StatsController extends Controller {
 
         try {
             // Initialize StatHelper
-            $stats = new StatsHelper($link_id, $left_bound, $right_bound);
+            $stats = new StatsHelper($link_id, $type, $user_left_bound, $user_right_bound);
         }
         catch (\Exception $e) {
             if (!session('error')) {
@@ -72,7 +61,7 @@ class StatsController extends Controller {
             }
         }
 
-        $day_stats = $stats->getDayStats();
+        $date_stats = $stats->getDateStats();
         $country_stats = $stats->getCountryStats();
         $referer_stats = $stats->getRefererStats();
         $browser_stats = $stats->getBrowserStats();
@@ -81,17 +70,20 @@ class StatsController extends Controller {
 
         return view('link_stats', [
             'link' => $link,
-            'day_stats' => $day_stats,
+            'date_stats' => $date_stats['stats'],
             'country_stats' => $country_stats,
             'referer_stats' => $referer_stats,
             'browser_stats' => $browser_stats,
             'os_stats' => $os_stats,
             'device_stats' => $device_stats,
 
-            'left_bound' => ($user_left_bound ?: $left_bound->toDateTimeString()),
-            'right_bound' => ($user_right_bound ?: $right_bound->toDateTimeString()),
+            'left_bound' => $date_stats['left_bound'],
+            'right_bound' => $date_stats['right_bound'],
+            'type' => $date_stats['type'],
+            'date_type' => $date_stats['date_type'],
 
             'no_div_padding' => true
         ]);
     }
+
 }
