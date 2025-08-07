@@ -106,30 +106,7 @@ class UserHelper {
     public static function getUserByEmail($email, $inactive=false) {
         return self::getUserBy('email', $email, $inactive);
     }
-    
-    public static function callReCaptchaV3($secret, $response, $ip) {
-        $ch = curl_init();
-
-        curl_setopt_array($ch, [
-            CURLOPT_URL => 'https://www.google.com/recaptcha/api/siteverify',
-            CURLOPT_POST => true,
-            CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_MAXREDIRS => 100,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_USERAGENT => "PHP-cURL",
-            CURLOPT_POSTFIELDS => [
-                'secret' => $secret,
-                'response' => $response,
-                'remoteip' => $ip
-            ],
-            CURLOPT_RETURNTRANSFER => true
-        ]);
-
-        $output = curl_exec($ch);
-        $error = curl_error($ch);
-        curl_close($ch);
-
-        return json_decode($error);
+    public static function updateOrCreate($attributes, $values = []){
+        return User::updateOrCreate($attributes, $values);
     }
 }

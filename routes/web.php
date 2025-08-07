@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LinkController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StatsController;
+use App\Http\Controllers\SocialiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,9 @@ use App\Http\Controllers\StatsController;
 */
 
 /* GET endpoints */
+Route::get('/auth/{driver}', [SocialiteController::class, 'redirect']);
+Route::get('/auth/{driver}/callback', [SocialiteController::class, 'callback']);
+
 
 Route::get('/', [IndexController::class, 'showIndexPage'])->name('index');
 Route::get('/about-polr', [StaticPageController::class, 'displayAbout'])->name('about');

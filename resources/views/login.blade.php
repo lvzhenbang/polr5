@@ -35,6 +35,12 @@
                 <button class="btn btn-primary form-submit" type="submit">Log In</button>
             </div>
 
+            <a href="/auth/github" class="btn btn-outline-secondary mt-3 mb-2 w-100">
+                <i class="fab fa-github"></i> Sign in with github
+            </a>
+            <a href="/auth/google" class="btn btn-outline-secondary mb-3 w-100">
+                <i class="fab fa-google"></i> Sign in with Google
+            </a>
             @if (env('POLR_ALLOW_ACCT_CREATION') == true)
             <p class="mt-2 text-center text-muted">
                 Don't have an account? <a href="{{route('signup')}}" class="text-muted ms-1"><b>Sign Up</b></a>
