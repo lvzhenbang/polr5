@@ -30,4 +30,29 @@ class UserFactory {
         return $user;
     }
 
+    public static function createSocialUser($username, $email, $ip='127.0.0.1', $api_key=false, $api_active=0, $role=false, $driver, $driver_id, $driver_token, $driver_refresh_token) {
+        if (!$role) {
+            $role = UserHelper::$USER_ROLES['default'];
+        }
+
+        $user = new User;
+        $user->username = $username;
+        $user->password = Hash::make('0123456789'); // Placeholder password        
+        $user->recovery_key = CryptoHelper::generateRandomHex(50);
+        $user->email = $email;
+        $user->active = 1;
+        $user->ip = $ip;
+        $user->role = $role;
+        $user->api_key = $api_key;
+        $user->api_active = $api_active;
+
+        $user->driver = $driver;
+        $user->driver_id = $driver_id;
+        $user->driver_token = $driver_token;
+        $user->driver_refresh_token = $driver_refresh_token;
+
+        $user->save();
+        return $user;
+    }
+
 }

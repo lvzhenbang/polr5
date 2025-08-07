@@ -27,6 +27,14 @@ class UserHelper {
         return ($user ? true : false);
     }
 
+    public static function userDriverIdExists($driver_id) {
+        /* XXX: used primarily with test cases */
+
+        $user = self::getUserByDriverId($driver_id, $inactive=true);
+
+        return ($user ? true : false);
+    }
+
     public static function validateUsername($username) {
         return ctype_alnum($username);
     }
@@ -106,6 +114,11 @@ class UserHelper {
     public static function getUserByEmail($email, $inactive=false) {
         return self::getUserBy('email', $email, $inactive);
     }
+
+    public static function getUserByDriverId($driver_id, $inactive=false) {
+        return self::getUserBy('driver_id', $driver_id, $inactive);
+    }
+
     public static function updateOrCreate($attributes, $values = []){
         return User::updateOrCreate($attributes, $values);
     }

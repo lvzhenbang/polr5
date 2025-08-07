@@ -38,6 +38,9 @@ class UserController extends Controller {
     public function performLogoutUser(Request $request) {
         $request->session()->forget('username');
         $request->session()->forget('role');
+        if ($request->session()->has('driverid')) {
+            $request->session()->forget('driverid');
+        }
         return redirect()->route('index');
     }
 
