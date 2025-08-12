@@ -20,8 +20,8 @@
                 <input class="form-control" type="password" require name="password" placeholder="Enter your passsword">
             </div>      
             <div class="mb-4">
-                <label for="password" class="form-label">Password</label>
-                <input class="form-control" type="email" require name="email" placeholder="polr5@polr.com">
+                <label for="email" class="form-label">Email</label>
+                <input class="form-control" type="email" require name="email" placeholder="polr@polr.com">
             </div>
 
             @if (env('POLR_ACCT_CREATION_RECAPTCHA') == false)
