@@ -57,7 +57,7 @@ $scope.initTables = function() {
             'scrollX': true
         }));
     }
-    if ($('#admin_links_table').length) {
+    if ($('#user_links_table').length) {
         $scope.datatables['user_links_table'] = $('#user_links_table').DataTable($.extend({
             "ajax": BASE_API_PATH + 'admin/get_user_links',
 
